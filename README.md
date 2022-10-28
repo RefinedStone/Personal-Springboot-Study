@@ -10,7 +10,7 @@ Logout 기능 구현 하였습니다(에러처리는 다시 확인 해야 합니
 
 
 
-AccountService.java
+### AccountService.java
 ```java
     // 비정상 요청을 되돌리기 위해 Transactional
     @Transactional
@@ -20,7 +20,7 @@ AccountService.java
         return ResponseDto.success("Delete Success");
     }
 ```
-AccountController.java
+### AccountController.java
 
 ```java
 @PostMapping(value = "/logout")
@@ -52,3 +52,11 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         configuration.addExposedHeader("Access_Token");
 }
 ```
+
+
+### 앞으로 개발 할 것
+One to Many , Many To One 연관관계 설정하기.
+
+저는 우선 연관관계를 무의미하게 막쓰는건 좋지 않다고 생각합니다.. 하지만 그 구조를 이해하고 공부를 하기 위해 조금은 오버스럽게 연관관계를 맺어 볼까 합니다.
+최대한 다양한 기능을 활용하여 개발 해보도록 하겠습니다
+
