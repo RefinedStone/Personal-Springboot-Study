@@ -25,7 +25,7 @@ public class Post extends Timestamped {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String title;
     @Column(nullable = true)
     private String contents;
@@ -59,30 +59,45 @@ public class Post extends Timestamped {
     }
 
 
-    public Post(PostRequestDto requestDto, Account account,Map<String,String> urlMap) {
-        this.contents = requestDto.getContents();
-        this.title = requestDto.getTitle();
+//    public Post(PostRequestDto requestDto, Account account,Map<String,String> urlMap) {
+//        this.contents = requestDto.getContents();
+//        this.title = requestDto.getTitle();
+//        this.account = account;
+//        this.email = account.getEmail();
+//        this.urlToString = urlMap.get("url");
+//        this.urlKey = urlMap.get("key");
+//    }
+    public Post(String contents, Account account,Map<String,String> urlMap) {
+        this.contents = contents;
+        this.title = "";
         this.account = account;
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
     }
+
     public Post(PostRequestDto requestDto, Account account) {
         this.contents = requestDto.getContents();
         this.title = requestDto.getTitle();
         this.account = account;
         this.email = account.getEmail();
     }
+    public Post(String contents, Account account) {
+        this.contents = contents;
+        this.title = "";
+        this.account = account;
+        this.email = account.getEmail();
+    }
 
     public Post(PostRequestDto requestDto, Map<String,String> urlMap) {
         this.contents = requestDto.getContents();
-        this.title = requestDto.getTitle();
+       // this.title = requestDto.getTitle();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
     }
 
     public void update(PostRequestDto requestDto) {
         this.contents = requestDto.getContents();
-        this.title = requestDto.getTitle();
+     //   this.title = requestDto.getTitle();
     }
 }
