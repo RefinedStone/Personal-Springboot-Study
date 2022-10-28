@@ -3,6 +3,7 @@
 개인 스프링 백앤드 서버 개발 레포지토리 입니다.
 
 제가 배운 내용을 최대한 활용 하려고 노력하고 있습니다.<br>
+
 ## 2022 - 10 - 29 update
 mySql -> h2-console세팅으로 변경 하였습니다. <br>
 -> [blog: h2-console 사용하기](https://chem-en-9273.tistory.com/66) <br>
@@ -55,8 +56,10 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 
 
 ### 앞으로 개발 할 것
-One to Many , Many To One 연관관계 설정하기.
+좋아요 기능을 One to Many , Many To One 연관관계 설정하여 개발
 
 저는 우선 연관관계를 무의미하게 막쓰는건 좋지 않다고 생각합니다.. 하지만 그 구조를 이해하고 공부를 하기 위해 조금은 오버스럽게 연관관계를 맺어 볼까 합니다.
 최대한 다양한 기능을 활용하여 개발 해보도록 하겠습니다
 
+
+Post와 Likes 가 있습니다. 1 포스트에 여러개의 like 
