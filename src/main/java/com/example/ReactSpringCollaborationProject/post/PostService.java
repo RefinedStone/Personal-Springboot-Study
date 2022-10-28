@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -39,15 +40,16 @@ public class PostService {
 //        postRepository.save(post);
 //        return new PostResponseDto(post);
 //    }
+
     @Transactional
-    public PostResponseDto createPost(PostRequestDto requestDto, MultipartFile imgFile, Account account) throws IOException {
+    public PostResponseDto createPost(String contents, MultipartFile imgFile, Account account) throws IOException {
         if (!(imgFile == null)) {
             var r = s3UploadUtil.upload(imgFile, "test");
-            Post post = new Post(requestDto, account, r);
+            Post post = new Post(contents, account, r);
             postRepository.save(post);
             return new PostResponseDto(post);
         } else {
-            Post post = new Post(requestDto, account);
+            Post post = new Post(contents, account);
             postRepository.save(post);
             return new PostResponseDto(post);
         }
@@ -78,9 +80,15 @@ public class PostService {
             throw new IllegalArgumentException("email 불일치");
         }
         postRepository.deleteById(id);
-        if(!(post.getUrlKey()==null)) {
+        if (!(post.getUrlKey() == null)) {
             s3UploadUtil.delete(post.getUrlKey());
         }
         return "delete success";
+    }
+
+    //테스트
+    public Optional<Post> getOnePost(Account account) {
+        Optional<Post> post = postRepository.findById(15L);
+        return post;
     }
 }

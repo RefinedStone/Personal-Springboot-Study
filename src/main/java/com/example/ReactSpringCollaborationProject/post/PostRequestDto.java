@@ -12,5 +12,4 @@ import lombok.Setter;
 public class PostRequestDto {
     private String contents;
     private String title;
-   // private String email;
 }

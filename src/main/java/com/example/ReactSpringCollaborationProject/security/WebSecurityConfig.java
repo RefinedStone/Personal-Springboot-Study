@@ -3,6 +3,8 @@ package com.example.ReactSpringCollaborationProject.security;
 import com.example.ReactSpringCollaborationProject.account.service.jwt.filter.JwtAuthFilter;
 import com.example.ReactSpringCollaborationProject.account.service.jwt.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,6 +22,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 @Configuration
+@ConditionalOnDefaultWebSecurity
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
@@ -41,10 +45,11 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         //cors 설정
+        // http.cors();
         http.cors().configurationSource(configurationSource());
         http.csrf().disable();
-                //ignoringAntMatchers("/user/**");
-
+        //ignoringAntMatchers("/user/**");
+        //세션 Stateless 설정
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
@@ -59,13 +64,16 @@ public class WebSecurityConfig {
 
     //cors 설정?
     @Bean
-    public CorsConfigurationSource configurationSource(){
+    CorsConfigurationSource configurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("POST","GET","DELETE","PUT", "PATCH"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("*", "POST", "GET", "DELETE", "PUT"));
+        //configuration.setAllowedMethods(Arrays.asList("GET"));
+        configuration.setAllowedHeaders(Arrays.asList("*", "Access_Token"));
         configuration.setAllowCredentials(true);
         configuration.addExposedHeader("*");
+        configuration.addExposedHeader("Access_Token");
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
