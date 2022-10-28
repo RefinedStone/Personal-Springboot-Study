@@ -10,8 +10,9 @@ Logout 기능 구현 하였습니다(에러처리는 다시 확인 해야 합니
 
 
 
-AccountService
+AccountService.java
 ```java
+    // 비정상 요청을 되돌리기 위해 Transactional
     @Transactional
     public ResponseDto<?> logout(String email) throws Exception {
         var refreshToken= refreshTokenRepository.findByAccountEmail(email).orElseThrow(RuntimeException::new);
@@ -19,7 +20,7 @@ AccountService
         return ResponseDto.success("Delete Success");
     }
 ```
-AccountController
+AccountController.java
 
 ```java
 @PostMapping(value = "/logout")
@@ -29,10 +30,11 @@ AccountController
     }
 
 ```
+
 기본적인 api를 구현 하고 난 뒤에는 코드 갈무리와, 에러 처리를 넣어야 할 것 같습니다. 최근에 FE팀과 협업 중인데,  BE서버만 개발할때와 달리 CORS에러에 직면하였습니다. 정상적으로 고쳐져야 할 문제들도 원인을 알 수 없는 이유로 FE쪽에서 헤더에 토큰값을 못받아오는 상황도 생겼습니다. 해결은 하였지만, 이 부분은 멘토분들도 이해하기 어렵다고 하더군요. 좀 더 공부 해볼 필요가 있겠습니다.
 
 ->[비정상적인 CORS에러 수정 commit내역](https://github.com/RefinedStone/Personal-Spring-Backend-Server/commit/1d62f22d4fd3045cd28100805d49ce77051fd7fa?diff=unified#diff-5931a1c89edd47981af4622fdf7dd3b4e3a8d9f821478da98de75b21ffaa44ddR49-R79)  
-
+WebSecurityConfig.java
 ```java
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         //cors 설정
@@ -45,7 +47,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     public CorsConfigurationSource configurationSource(){
     CorsConfigurationSource configurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        
+        //헤더의 모두 승인인 "*"을 넣었지만 노출이 안되어 직접 Access_Token을 노출시키도록 하니 수정되었다.
         configuration.addExposedHeader("*");
         configuration.addExposedHeader("Access_Token");
 }
