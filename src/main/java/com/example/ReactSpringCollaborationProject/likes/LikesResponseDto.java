@@ -1,2 +1,5 @@
-package com.example.ReactSpringCollaborationProject.likes;public class LikesResponseDto {
+package com.example.ReactSpringCollaborationProject.likes;
+
+public class LikesResponseDto {
+
 }
