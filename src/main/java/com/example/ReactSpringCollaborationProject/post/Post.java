@@ -4,6 +4,7 @@ package com.example.ReactSpringCollaborationProject.post;
 import com.example.ReactSpringCollaborationProject.Timestamped;
 import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
 import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
+import com.example.ReactSpringCollaborationProject.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.Map;
 public class Post extends Timestamped {
 
     @Id
-    @Column(name = "post_id")
+    @Column(name = "POST_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -48,6 +49,12 @@ public class Post extends Timestamped {
     @OneToMany(mappedBy = "post")
     private List<Comment> comment;
 
+    // 연관관계
+    // One Post To Many Likes
+//    @OneToMany(mappedBy = "post")
+//    private List<Likes> likes;
+
+
     public Post(String contents, String title) {
         this.contents = contents;
         this.title = title;
@@ -67,7 +74,8 @@ public class Post extends Timestamped {
 //        this.urlToString = urlMap.get("url");
 //        this.urlKey = urlMap.get("key");
 //    }
-    public Post(String contents, Account account,Map<String,String> urlMap) {
+
+    public Post(String contents, Account account, Map<String, String> urlMap) {
         this.contents = contents;
         this.title = "";
         this.account = account;
@@ -82,6 +90,7 @@ public class Post extends Timestamped {
         this.account = account;
         this.email = account.getEmail();
     }
+
     public Post(String contents, Account account) {
         this.contents = contents;
         this.title = "";
@@ -89,15 +98,15 @@ public class Post extends Timestamped {
         this.email = account.getEmail();
     }
 
-    public Post(PostRequestDto requestDto, Map<String,String> urlMap) {
+    public Post(PostRequestDto requestDto, Map<String, String> urlMap) {
         this.contents = requestDto.getContents();
-       // this.title = requestDto.getTitle();
+        // this.title = requestDto.getTitle();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
     }
 
     public void update(PostRequestDto requestDto) {
         this.contents = requestDto.getContents();
-     //   this.title = requestDto.getTitle();
+        //   this.title = requestDto.getTitle();
     }
 }
