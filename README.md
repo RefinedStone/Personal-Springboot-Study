@@ -66,6 +66,45 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 
 연관관계를 설정하여 구현하기로 했지만, 우선적으로 좋아요 기능을 러프하게 구현 한 뒤 해보려고 생각을 바꾸었습니다
 
+Entity의 @Getter 가 작동 안하는 오류가 발생하였다. 모든 멤버변수가 그런것이 아니라.. Boolean 타입의 변수인 likeCheck만 작동이 되질 않았다.
+
+그래서, 따로 Getter와 Setter를 생성해주었다.
+
+https://github.com/RefinedStone/Personal-Spring-Backend-Server/commit/6eee321598ef614710ad19571500d6e034443c4f#diff-8f94b52d357c4a980a3e0f8b65de107957af302d609e744b0a7acca618507d73R44-R51
+
+
+Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 true,false 한 값만 받아 오는 부분에서도 굳이 dto를 써야 하는것인가.. 하는 의문이 들었다.
+
+물론, 배운대로 dto를 사용하여 코드를 작성 하였지만, 이런경우에 까지 굳이 써야 하는가에 대한 고민은 계속되고 있다.
+
+### LikesService
+```java
+ //좋아요 등록
+    @Transactional
+    public boolean createLikes(Account account, Long postId, LikesRequestDto likesRequestDto) {
+        
+        postRepository.findById(postId).orElseThrow(RuntimeException::new);
+        
+        var r = likesRepository.findByAccountAndPostId(account, postId);
+        if (r.isPresent()) {
+            Likes likes = r.get();
+            return (boolean) likes.setLikeCheck(!(likesRequestDto.getLikeCheck()));
+        } else {
+            Likes likes = new Likes(account, postId, likesRequestDto);
+            likesRepository.save(likes);
+            return (boolean) likes.getLikeCheck();
+        }
+    }
+````
+
+큰 로직은 2개로 나뉜다. 지금 좋아요가 레포지토리에 존재 하는지 안하는지로 나뉜다.
+
+최근 프론트엔드와 많은 협업을 거치는 과정에서 느끼는게 있다.. 프론트에서 요청관리하기 쉽도록 response와 db table을 설계 해야 한다는 것이다
+
+지금은 최소기능만 구현하도록 작성하느라  return 값을 boolean 타입으로 보내 주는데 이것이 과연 좋은 방법인가에 대한 의문이 있다.
+
+효율성과 편리성에 대한 고민은 연관관계 관련 코드를 작성하고 난 뒤에 다시 해볼려고 한다.
+
 
 
 
