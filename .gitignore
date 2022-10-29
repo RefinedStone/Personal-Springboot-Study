@@ -7,6 +7,14 @@
 /dataSources/
 /dataSources.local.xml
 
+#readme
+README.md
+
+#DB
+myselectdb.*
+myselectdb.mv.db
+myselectdb.trace.db
+myselectdb.lock.db
 
 #
 .idea
