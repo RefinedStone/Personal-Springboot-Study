@@ -77,7 +77,7 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 
 물론, 배운대로 dto를 사용하여 코드를 작성 하였지만, 이런경우에 까지 굳이 써야 하는가에 대한 고민은 계속되고 있다.
 
-### LikesService
+### LikesService.java
 ```java
  //좋아요 등록
     @Transactional
