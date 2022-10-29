@@ -9,6 +9,10 @@
 
 #DB
 myselectdb.*
+myselectdb.mv.db
+myselectdb.trace.db
+myselectdb.lock.db
+
 #
 .idea
 *.iws
