@@ -3,6 +3,7 @@
 개인 스프링 백앤드 서버 개발 레포지토리 입니다.
 
 제가 배운 내용을 최대한 활용 하려고 노력하고 있습니다.<br>
+
 ## 2022 - 10 - 29 update
 mySql -> h2-console세팅으로 변경 하였습니다. <br>
 -> [blog: h2-console 사용하기](https://chem-en-9273.tistory.com/66) <br>
@@ -10,7 +11,7 @@ Logout 기능 구현 하였습니다(에러처리는 다시 확인 해야 합니
 
 
 
-AccountService.java
+### AccountService.java
 ```java
     // 비정상 요청을 되돌리기 위해 Transactional
     @Transactional
@@ -20,7 +21,7 @@ AccountService.java
         return ResponseDto.success("Delete Success");
     }
 ```
-AccountController.java
+### AccountController.java
 
 ```java
 @PostMapping(value = "/logout")
@@ -52,3 +53,19 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         configuration.addExposedHeader("Access_Token");
 }
 ```
+
+
+### 앞으로 개발 할 것
+좋아요 기능을 One to Many , Many To One 연관관계 설정하여 개발
+
+저는 우선 연관관계를 무의미하게 막쓰는건 좋지 않다고 생각합니다.. 하지만 그 구조를 이해하고 공부를 하기 위해 조금은 오버스럽게 연관관계를 맺어 볼까 합니다.
+최대한 다양한 기능을 활용하여 개발 해보도록 하겠습니다
+
+## 2022 - 10 - 30 update
+좋아요 기능 구현하기.
+
+연관관계를 설정하여 구현하기로 했지만, 우선적으로 좋아요 기능을 러프하게 구현 한 뒤 해보려고 생각을 바꾸었습니다
+
+
+
+
