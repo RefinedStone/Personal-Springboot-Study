@@ -7,7 +7,8 @@
 /dataSources/
 /dataSources.local.xml
 
-
+#DB
+myselectdb.*
 #
 .idea
 *.iws
