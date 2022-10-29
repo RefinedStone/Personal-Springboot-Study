@@ -61,5 +61,11 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 저는 우선 연관관계를 무의미하게 막쓰는건 좋지 않다고 생각합니다.. 하지만 그 구조를 이해하고 공부를 하기 위해 조금은 오버스럽게 연관관계를 맺어 볼까 합니다.
 최대한 다양한 기능을 활용하여 개발 해보도록 하겠습니다
 
+## 2022 - 10 - 30 update
+좋아요 기능 구현하기.
 
-Post와 Likes 가 있습니다. 1 포스트에 여러개의 like 
+연관관계를 설정하여 구현하기로 했지만, 우선적으로 좋아요 기능을 러프하게 구현 한 뒤 해보려고 생각을 바꾸었습니다
+
+
+
+
