@@ -138,3 +138,5 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 예컨대, DB에서 명확하게 한번에 걸러 오지 않았다면, stream의 필터라던지 distinct등을 이용해서 원하는 값만 리스트로 뽑아낸다던지 등의 무궁무진한 방법이 있을 것 같습니다.
 
 좀 더 어려운 로직에서 빛을 발할것 같아 기대가 됩니다. 더욱 stream과 lamda식을 깊게 파보아야 겠습니다
+
+src/main/java/com/example/ReactSpringCollaborationProject/post/PostService.java
