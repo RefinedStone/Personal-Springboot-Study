@@ -106,5 +106,35 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 효율성과 편리성에 대한 고민은 연관관계 관련 코드를 작성하고 난 뒤에 다시 해볼려고 한다.
 
 
+## 2022 - 10 -31 update
 
+최근 람다와 스트림에 대해 다시 공부를 하고 있습니다. 제 학습 레포지토리에도 스트림을 적용 시켜볼만한 코드가 있을까 하다가 좋은 부분을 발견하여 적용 시켜 보았습니다.
 
+```java
+->변경 전
+//    // 모든 글 읽어오기
+//    public List<PostResponseDto> getAllpost() {
+//        var postLists = postRepository.findAllByOrderByCreatedAtDesc();
+//        var postDtoLists = new ArrayList<PostResponseDto>();
+//        for (Post postList : postLists) {
+//            postDtoLists.add(new PostResponseDto(postList));
+//        }
+//        return postDtoLists;
+//    }
+->변경 후
+    // 모든 글 읽어오기
+    public List<PostResponseDto> getAllpost() {
+        var postLists = postRepository.findAllByOrderByCreatedAtDesc();
+        var postDtoLists = postLists.stream().map(x->new PostResponseDto(x)).collect(Collectors.toList());
+        return postDtoLists;
+    }
+
+```
+
+당장의 코드에선 크게 이득은 없습니다 하지만..stream과 lamda의 학습의 관점에서는 도움이 되었다고 생각은 합니다.
+
+또한 새로운 기법을 적용하다 보니 활용방법이 떠오르기도 하네요. 
+
+예컨대, DB에서 명확하게 한번에 걸러 오지 않았다면, stream의 필터라던지 distinct등을 이용해서 원하는 값만 리스트로 뽑아낸다던지 등의 무궁무진한 방법이 있을 것 같습니다.
+
+좀 더 어려운 로직에서 빛을 발할것 같아 기대가 됩니다. 더욱 stream과 lamda식을 깊게 파보아야 겠습니다
