@@ -110,6 +110,7 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 
 최근 람다와 스트림에 대해 다시 공부를 하고 있습니다. 제 학습 레포지토리에도 스트림을 적용 시켜볼만한 코드가 있을까 하다가 좋은 부분을 발견하여 적용 시켜 보았습니다.
 
+###AccountService.java
 ```java
 ->변경 전
     // 모든 글 읽어오기
@@ -139,4 +140,11 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 
 좀 더 어려운 로직에서 빛을 발할것 같아 기대가 됩니다. 더욱 stream과 lamda식을 깊게 파보아야 겠습니다
 
-src/main/java/com/example/ReactSpringCollaborationProject/post/PostService.java
+--추가 연습김에 극단적으로 코드를 줄여 보았습니다.
+
+```java
+    public List<PostResponseDto> getAllpost() {
+        var postDtoLists = postRepository.findAllByOrderByCreatedAtDesc().stream().map(PostResponseDto::new).collect(Collectors.toList());
+        return postDtoLists;
+    }
+```
