@@ -112,15 +112,15 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 
 ```java
 ->변경 전
-//    // 모든 글 읽어오기
-//    public List<PostResponseDto> getAllpost() {
-//        var postLists = postRepository.findAllByOrderByCreatedAtDesc();
-//        var postDtoLists = new ArrayList<PostResponseDto>();
-//        for (Post postList : postLists) {
-//            postDtoLists.add(new PostResponseDto(postList));
-//        }
-//        return postDtoLists;
-//    }
+    // 모든 글 읽어오기
+    public List<PostResponseDto> getAllpost() {
+        var postLists = postRepository.findAllByOrderByCreatedAtDesc();
+        var postDtoLists = new ArrayList<PostResponseDto>();
+        for (Post postList : postLists) {
+            postDtoLists.add(new PostResponseDto(postList));
+        }
+      return postDtoLists;
+    }
 ->변경 후
     // 모든 글 읽어오기
     public List<PostResponseDto> getAllpost() {
