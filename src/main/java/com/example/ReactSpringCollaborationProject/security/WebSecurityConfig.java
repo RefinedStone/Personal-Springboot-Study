@@ -68,7 +68,6 @@ public class WebSecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("*", "POST", "GET", "DELETE", "PUT"));
-        //configuration.setAllowedMethods(Arrays.asList("GET"));
         configuration.setAllowedHeaders(Arrays.asList("*", "Access_Token"));
         configuration.setAllowCredentials(true);
         configuration.addExposedHeader("*");

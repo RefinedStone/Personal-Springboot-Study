@@ -108,7 +108,7 @@ public class AccountService {
     //logout 기능
     @Transactional
     public ResponseDto<?> logout(String email) throws Exception {
-        var refreshToken= refreshTokenRepository.findByAccountEmail(email).orElseThrow(RuntimeException::new);
+        var refreshToken = refreshTokenRepository.findByAccountEmail(email).orElseThrow(RuntimeException::new);
         refreshTokenRepository.delete(refreshToken);
         return ResponseDto.success("Delete Success");
     }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -23,13 +24,19 @@ public class PostService {
         this.s3UploadUtil = s3UploadUtil;
     }
 
+//    // 모든 글 읽어오기
+//    public List<PostResponseDto> getAllpost() {
+//        var postLists = postRepository.findAllByOrderByCreatedAtDesc();
+//        var postDtoLists = new ArrayList<PostResponseDto>();
+//        for (Post postList : postLists) {
+//            postDtoLists.add(new PostResponseDto(postList));
+//        }
+//        return postDtoLists;
+//    }
     // 모든 글 읽어오기
     public List<PostResponseDto> getAllpost() {
         var postLists = postRepository.findAllByOrderByCreatedAtDesc();
-        var postDtoLists = new ArrayList<PostResponseDto>();
-        for (Post postList : postLists) {
-            postDtoLists.add(new PostResponseDto(postList));
-        }
+        var postDtoLists = postLists.stream().map(x->new PostResponseDto(x)).collect(Collectors.toList());
         return postDtoLists;
     }
 
