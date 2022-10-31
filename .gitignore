@@ -9,6 +9,7 @@
 
 #readme
 README.md
+readme.md
 
 #DB
 myselectdb.*
@@ -16,6 +17,11 @@ myselectdb.mv.db
 myselectdb.trace.db
 myselectdb.lock.db
 
+#
+gradle.*
+
+#
+build.*
 #
 .idea
 *.iws

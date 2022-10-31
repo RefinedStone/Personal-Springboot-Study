@@ -4,7 +4,6 @@ package com.example.ReactSpringCollaborationProject.post;
 import com.example.ReactSpringCollaborationProject.Timestamped;
 import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
 import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
-import com.example.ReactSpringCollaborationProject.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
