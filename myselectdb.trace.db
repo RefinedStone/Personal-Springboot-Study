@@ -1155,7 +1155,7 @@ org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.example.ReactSpringCollaborationProject.ReactSpringCollaborationProject.main(ReactSpringCollaborationProject.java:13)
+	at com.example.PersonalSpringStudy.PersonalSpringStudy.main(PersonalSpringStudy.java:13)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: E:/dev/spring/week4/miniProject/personal-spring-server/myselectdb.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
@@ -1228,7 +1228,7 @@ org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.example.ReactSpringCollaborationProject.ReactSpringCollaborationProject.main(ReactSpringCollaborationProject.java:13)
+	at com.example.PersonalSpringStudy.PersonalSpringStudy.main(PersonalSpringStudy.java:13)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: E:/dev/spring/week4/miniProject/personal-spring-server/myselectdb.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
@@ -2049,7 +2049,7 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.example.ReactSpringCollaborationProject.ReactSpringCollaborationProject.main(ReactSpringCollaborationProject.java:13)
+	at com.example.PersonalSpringStudy.PersonalSpringStudy.main(PersonalSpringStudy.java:13)
 2022-10-31 06:57:30 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
@@ -2091,4 +2091,4 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
-	at com.example.ReactSpringCollaborationProject.ReactSpringCollaborationProject.main(ReactSpringCollaborationProject.java:13)
+	at com.example.PersonalSpringStudy.PersonalSpringStudy.main(PersonalSpringStudy.java:13)
