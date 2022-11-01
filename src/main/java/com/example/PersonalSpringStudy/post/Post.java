@@ -13,6 +13,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @NoArgsConstructor
 @Getter
@@ -52,6 +53,7 @@ public class Post extends Timestamped {
     @OneToMany(mappedBy = "post")
     private List<Likes> likes;
 
+    @Column(nullable = true)
     private Long likesLength;
 
     public Post(String contents, String title) {
@@ -111,12 +113,14 @@ public class Post extends Timestamped {
     }
 
     public void setLikesLength(boolean likesType) {
-
-        if (likesType) {
-            this.likesLength += - 1L;
+        if (this.likesLength == null) {
+            this.likesLength = 1L;
+            return;
         }
-        else {
-            this.likesLength +=  + 1L;
+        if (likesType) {
+            this.likesLength += +1L;
+        } else {
+            this.likesLength += -1L;
         }
 
     }

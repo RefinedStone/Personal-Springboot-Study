@@ -18,13 +18,11 @@ public class LikesController {
     }
 
     // 좋아요 등록
-    @PutMapping("/likes/{postId}")
+    @DeleteMapping("/likes/{postId}")
     public ResponseDto<?> createLikes(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
-            @PathVariable Long postId,
-            @RequestBody LikesRequestDto likesRequestDto) {
-
-        return ResponseDto.success(likesService.createLikes(userDetails.getAccount(), postId, likesRequestDto));
+            @PathVariable Long postId) {
+        return ResponseDto.success(likesService.createLikes(userDetails.getAccount(), postId));
     }
 
 

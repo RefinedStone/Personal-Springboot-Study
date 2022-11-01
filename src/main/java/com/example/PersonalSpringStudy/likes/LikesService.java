@@ -17,20 +17,20 @@ public class LikesService {
 
     //좋아요 등록
     @Transactional
-    public boolean createLikes(Account account, Long postId, LikesRequestDto likesRequestDto) {
+    public boolean createLikes(Account account, Long postId) {
 
         Post post = postRepository.findById(postId).orElseThrow(RuntimeException::new);
-
         var r = likesRepository.findByAccountAndPost(account, post);
         if (r.isPresent()) {
             Likes likes = r.get();
-            post.setLikesLength(likesRequestDto.getLikeCheck());
-            return (boolean) likes.setLikeCheck(!(likesRequestDto.getLikeCheck()));
+            likes.setLikeCheck(!(likes.getLikeCheck()));
+            post.setLikesLength(likes.getLikeCheck());
+            return likes.getLikeCheck();
         } else {
-            Likes likes = new Likes(account, post, likesRequestDto);
+            Likes likes = new Likes(account, post);
             likesRepository.save(likes);
-            post.setLikesLength(likesRequestDto.getLikeCheck());
-            return (boolean) likes.getLikeCheck();
+            post.setLikesLength(likes.getLikeCheck());
+            return likes.getLikeCheck();
         }
 
     }
