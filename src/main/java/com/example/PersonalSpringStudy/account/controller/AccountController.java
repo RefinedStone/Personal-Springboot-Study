@@ -1,12 +1,12 @@
-package com.example.ReactSpringCollaborationProject.account.controller;
+package com.example.PersonalSpringStudy.account.controller;
 
-import com.example.ReactSpringCollaborationProject.account.service.AccountService;
-import com.example.ReactSpringCollaborationProject.account.service.entity.dto.AccountReqDto;
-import com.example.ReactSpringCollaborationProject.account.service.entity.dto.LoginReqDto;
-import com.example.ReactSpringCollaborationProject.account.service.jwt.util.JwtUtil;
-import com.example.ReactSpringCollaborationProject.global.dto.GlobalResDto;
-import com.example.ReactSpringCollaborationProject.global.dto.ResponseDto;
-import com.example.ReactSpringCollaborationProject.security.user.UserDetailsImpl;
+import com.example.PersonalSpringStudy.account.service.AccountService;
+import com.example.PersonalSpringStudy.account.service.entity.dto.AccountReqDto;
+import com.example.PersonalSpringStudy.account.service.entity.dto.LoginReqDto;
+import com.example.PersonalSpringStudy.account.service.jwt.util.JwtUtil;
+import com.example.PersonalSpringStudy.global.dto.GlobalResDto;
+import com.example.PersonalSpringStudy.global.dto.ResponseDto;
+import com.example.PersonalSpringStudy.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

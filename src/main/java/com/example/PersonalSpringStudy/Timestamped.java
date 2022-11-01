@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject;
+package com.example.PersonalSpringStudy;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

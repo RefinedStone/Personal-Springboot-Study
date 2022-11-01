@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.post;
+package com.example.PersonalSpringStudy.post;
 
 import lombok.Getter;
 

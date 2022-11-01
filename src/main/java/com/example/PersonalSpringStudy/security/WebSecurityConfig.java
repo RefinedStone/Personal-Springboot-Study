@@ -1,7 +1,7 @@
-package com.example.ReactSpringCollaborationProject.security;
+package com.example.PersonalSpringStudy.security;
 
-import com.example.ReactSpringCollaborationProject.account.service.jwt.filter.JwtAuthFilter;
-import com.example.ReactSpringCollaborationProject.account.service.jwt.util.JwtUtil;
+import com.example.PersonalSpringStudy.account.service.jwt.filter.JwtAuthFilter;
+import com.example.PersonalSpringStudy.account.service.jwt.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;

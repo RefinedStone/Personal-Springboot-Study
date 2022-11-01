@@ -1,9 +1,9 @@
-package com.example.ReactSpringCollaborationProject.comment.controller;
+package com.example.PersonalSpringStudy.comment.controller;
 
-import com.example.ReactSpringCollaborationProject.comment.dto.CommentRequestDto;
-import com.example.ReactSpringCollaborationProject.comment.service.CommentService;
-import com.example.ReactSpringCollaborationProject.global.dto.ResponseDto;
-import com.example.ReactSpringCollaborationProject.security.user.UserDetailsImpl;
+import com.example.PersonalSpringStudy.comment.dto.CommentRequestDto;
+import com.example.PersonalSpringStudy.comment.service.CommentService;
+import com.example.PersonalSpringStudy.global.dto.ResponseDto;
+import com.example.PersonalSpringStudy.security.user.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;

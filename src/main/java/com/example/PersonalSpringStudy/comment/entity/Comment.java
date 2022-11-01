@@ -1,9 +1,9 @@
-package com.example.ReactSpringCollaborationProject.comment.entity;
+package com.example.PersonalSpringStudy.comment.entity;
 
-import com.example.ReactSpringCollaborationProject.Timestamped;
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
-import com.example.ReactSpringCollaborationProject.comment.dto.CommentRequestDto;
-import com.example.ReactSpringCollaborationProject.post.Post;
+import com.example.PersonalSpringStudy.Timestamped;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.comment.dto.CommentRequestDto;
+import com.example.PersonalSpringStudy.post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

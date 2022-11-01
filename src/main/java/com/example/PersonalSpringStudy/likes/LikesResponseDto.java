@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.likes;
+package com.example.PersonalSpringStudy.likes;
 
 public class LikesResponseDto {
 

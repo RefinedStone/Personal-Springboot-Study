@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.post;
+package com.example.PersonalSpringStudy.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostRequestDto {
-    private String contents;
     private String title;
+    private String contents;
+
 }
