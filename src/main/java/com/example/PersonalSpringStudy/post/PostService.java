@@ -45,7 +45,6 @@ public class PostService {
         }
     }
 
-
     //글 수정
     @Transactional
     public PostResponseDto updatePost(PostRequestDto requestDto, Long id, Account account) {
@@ -83,12 +82,11 @@ public class PostService {
 //    }
 
     public Post getOnePost(Account account) {
-        //final String testValue = "";
-        Post post = postRepository.findById(10L).orElseThrow(RuntimeException::new);
-        Post post2 = new Post(post) {
-            public String nickname2 = account.getNickname();
 
+        Post post = postRepository.findById(10L).orElseThrow(RuntimeException::new);
+        return new Post(post) {
+            //Response에 nickname2라는 필드명을 추가하고 싶다!
+            public String nickname2 = account.getNickname();
         };
-        return post2;
     }
 }

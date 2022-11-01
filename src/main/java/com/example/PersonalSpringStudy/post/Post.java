@@ -8,11 +8,11 @@ import com.example.PersonalSpringStudy.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
-
 
 @NoArgsConstructor
 @Getter
@@ -109,4 +109,16 @@ public class Post extends Timestamped {
         this.contents = requestDto.getContents();
         this.title = requestDto.getTitle();
     }
+
+    public void setLikesLength(boolean likesType) {
+
+        if (likesType) {
+            this.likesLength += - 1L;
+        }
+        else {
+            this.likesLength +=  + 1L;
+        }
+
+    }
 }
+

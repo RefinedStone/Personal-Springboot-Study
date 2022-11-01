@@ -12,6 +12,7 @@ public class PostResponseDto {
     private String email;
     private String urlToString;
 
+    //null이라면 이 필드 값 ignore
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String nickname;
 
