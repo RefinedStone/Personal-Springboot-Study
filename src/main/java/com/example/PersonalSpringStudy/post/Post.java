@@ -1,6 +1,5 @@
 package com.example.PersonalSpringStudy.post;
 
-
 import com.example.PersonalSpringStudy.Timestamped;
 import com.example.PersonalSpringStudy.account.service.entity.Account;
 import com.example.PersonalSpringStudy.comment.entity.Comment;
@@ -8,12 +7,10 @@ import com.example.PersonalSpringStudy.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @NoArgsConstructor
 @Getter
@@ -82,7 +79,7 @@ public class Post extends Timestamped {
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
-//        this.likesLength =
+        this.likesLength = 0L;
     }
 
     public Post(PostRequestDto requestDto, Account account) {
@@ -97,6 +94,7 @@ public class Post extends Timestamped {
         this.title = "";
         this.account = account;
         this.email = account.getEmail();
+        this.likesLength = 0L;
     }
 
     public Post(PostRequestDto requestDto, Map<String, String> urlMap) {
@@ -113,16 +111,7 @@ public class Post extends Timestamped {
     }
 
     public void setLikesLength(boolean likesType) {
-        if (this.likesLength == null) {
-            this.likesLength = 1L;
-            return;
-        }
-        if (likesType) {
-            this.likesLength += +1L;
-        } else {
-            this.likesLength += -1L;
-        }
-
+        this.likesLength = (likesType) ? this.likesLength + 1L : this.likesLength - 1L;
     }
 }
 

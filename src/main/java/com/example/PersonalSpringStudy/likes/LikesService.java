@@ -32,7 +32,6 @@ public class LikesService {
             post.setLikesLength(likes.getLikeCheck());
             return likes.getLikeCheck();
         }
-
     }
 
 }

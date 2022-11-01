@@ -24,6 +24,4 @@ public class LikesController {
             @PathVariable Long postId) {
         return ResponseDto.success(likesService.createLikes(userDetails.getAccount(), postId));
     }
-
-
 }

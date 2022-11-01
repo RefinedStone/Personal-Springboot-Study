@@ -4,7 +4,6 @@ import com.example.PersonalSpringStudy.account.service.entity.Account;
 import com.example.PersonalSpringStudy.post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @NoArgsConstructor
