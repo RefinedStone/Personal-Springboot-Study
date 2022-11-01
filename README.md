@@ -148,3 +148,53 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
         return postDtoLists;
     }
 ```
+
+## 2022 -11 -02 update
+
+항상 개발중에 느끼는 지점은 response의 관리가 어렵다 입니다. response에 넣을 값들을 dto를 통해 보내주는데, 무한히 많은 dto를 만들기에는 코드 재
+사용성이 떨어집니다. 그래서 이 부분에 대한 연구를 해보았습니다.
+
+첫번째는, 익명클래스를 이용하는 방법입니다.
+
+
+###PostService.java
+```java
+public Post getOnePost(Account account) {
+        Post post = postRepository.findById(10L).orElseThrow(RuntimeException::new);
+        Post post2 = new Post(post) {
+            //Response에 nickname2라는 필드명을 추가하고 싶다!
+            public String nickname2 = account.getNickname();
+
+        };
+        return post2;
+    }
+```
+
+
+두번째 방법은 바로 dto단에서 어노테이션을 달아주고 생성자를 새로 만드는 방법입니다.
+
+```java
+@Getter
+public class PostResponseDto {
+    //null값이 들어온다면 이 필드를 무시하고 싶다!!
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String nickname;
+    
+    //항상 nickname을 보여주고 싶진 않으니, 생성자를 추가하여 관리!!
+    public PostResponseDto(Post post, Account account) {
+        this.postId = post.getId();
+        this.title = post.getTitle();
+        this.contents = post.getContents();
+        this.email = post.getEmail();
+        this.urlToString = post.getUrlToString();
+        this.nickname = account.getNickname();
+    }
+
+
+}
+```
+
+
+결과만 말씀드리면 굉장히 짧지만.. 저의 짧은 지식으론 여기까지가 통용되는 방법인것 같습니다. 
+
+
