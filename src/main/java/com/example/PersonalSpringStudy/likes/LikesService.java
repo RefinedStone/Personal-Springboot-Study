@@ -24,12 +24,15 @@ public class LikesService {
         var r = likesRepository.findByAccountAndPost(account, post);
         if (r.isPresent()) {
             Likes likes = r.get();
+            post.setLikesLength(likesRequestDto.getLikeCheck());
             return (boolean) likes.setLikeCheck(!(likesRequestDto.getLikeCheck()));
         } else {
             Likes likes = new Likes(account, post, likesRequestDto);
             likesRepository.save(likes);
+            post.setLikesLength(likesRequestDto.getLikeCheck());
             return (boolean) likes.getLikeCheck();
         }
+
     }
 
 }
