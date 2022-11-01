@@ -48,6 +48,7 @@ public class AccountController {
     public ResponseDto<?> getMyPost(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseDto.success(accountService.getMyPost(userDetails.getAccount()));
     }
+
     //내 커멘트 불러오기
     @GetMapping("/mycomment")
     public ResponseDto<?> getMyComment(@AuthenticationPrincipal UserDetailsImpl userDetails) {
