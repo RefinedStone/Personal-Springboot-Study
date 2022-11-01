@@ -161,12 +161,10 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 ```java
 public Post getOnePost(Account account) {
         Post post = postRepository.findById(10L).orElseThrow(RuntimeException::new);
-        Post post2 = new Post(post) {
+        return new Post(post) {
             //Response에 nickname2라는 필드명을 추가하고 싶다!
             public String nickname2 = account.getNickname();
-
         };
-        return post2;
     }
 ```
 
