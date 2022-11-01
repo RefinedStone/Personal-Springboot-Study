@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.global.dto;
+package com.example.PersonalSpringStudy.global.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

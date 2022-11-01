@@ -1,6 +1,6 @@
-package com.example.ReactSpringCollaborationProject.comment.dto;
+package com.example.PersonalSpringStudy.comment.dto;
 
-import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
+import com.example.PersonalSpringStudy.comment.entity.Comment;
 import lombok.Getter;
 
 @Getter

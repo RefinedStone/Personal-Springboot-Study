@@ -1,7 +1,6 @@
-package com.example.ReactSpringCollaborationProject.comment.repository;
+package com.example.PersonalSpringStudy.comment.repository;
 
-import com.example.ReactSpringCollaborationProject.comment.dto.CommentResponseDto;
-import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
+import com.example.PersonalSpringStudy.comment.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

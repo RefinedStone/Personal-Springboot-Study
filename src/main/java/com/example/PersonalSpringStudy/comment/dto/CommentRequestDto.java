@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.comment.dto;
+package com.example.PersonalSpringStudy.comment.dto;
 
 import lombok.Getter;
 

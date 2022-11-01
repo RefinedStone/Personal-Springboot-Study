@@ -1,13 +1,13 @@
-package com.example.ReactSpringCollaborationProject.post;
+package com.example.PersonalSpringStudy.post;
 
 
-import com.example.ReactSpringCollaborationProject.Timestamped;
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
-import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
+import com.example.PersonalSpringStudy.Timestamped;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.comment.entity.Comment;
+import com.example.PersonalSpringStudy.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,7 +15,6 @@ import java.util.Map;
 
 
 @NoArgsConstructor
-@Setter
 @Getter
 @Entity
 public class Post extends Timestamped {
@@ -50,9 +49,10 @@ public class Post extends Timestamped {
 
     // 연관관계
     // One Post To Many Likes
-//    @OneToMany(mappedBy = "post")
-//    private List<Likes> likes;
+    @OneToMany(mappedBy = "post")
+    private List<Likes> likes;
 
+    private Long likesLength;
 
     public Post(String contents, String title) {
         this.contents = contents;
@@ -81,6 +81,7 @@ public class Post extends Timestamped {
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
+//        this.likesLength =
     }
 
     public Post(PostRequestDto requestDto, Account account) {
@@ -103,9 +104,9 @@ public class Post extends Timestamped {
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
     }
-
+//글내용만 업데이트
     public void update(PostRequestDto requestDto) {
         this.contents = requestDto.getContents();
-        //   this.title = requestDto.getTitle();
+           this.title = requestDto.getTitle();
     }
 }

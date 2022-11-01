@@ -1,7 +1,8 @@
-package com.example.ReactSpringCollaborationProject.likes;
+package com.example.PersonalSpringStudy.likes;
 
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
-import com.example.ReactSpringCollaborationProject.post.PostRepository;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.post.Post;
+import com.example.PersonalSpringStudy.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,14 @@ public class LikesService {
     @Transactional
     public boolean createLikes(Account account, Long postId, LikesRequestDto likesRequestDto) {
 
-        postRepository.findById(postId).orElseThrow(RuntimeException::new);
+        Post post = postRepository.findById(postId).orElseThrow(RuntimeException::new);
 
-        var r = likesRepository.findByAccountAndPostId(account, postId);
+        var r = likesRepository.findByAccountAndPost(account, post);
         if (r.isPresent()) {
             Likes likes = r.get();
             return (boolean) likes.setLikeCheck(!(likesRequestDto.getLikeCheck()));
         } else {
-            Likes likes = new Likes(account, postId, likesRequestDto);
+            Likes likes = new Likes(account, post, likesRequestDto);
             likesRepository.save(likes);
             return (boolean) likes.getLikeCheck();
         }

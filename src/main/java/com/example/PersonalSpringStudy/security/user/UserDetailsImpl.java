@@ -1,6 +1,6 @@
-package com.example.ReactSpringCollaborationProject.security.user;
+package com.example.PersonalSpringStudy.security.user;
 
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

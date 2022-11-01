@@ -1,4 +1,4 @@
-package com.example.ReactSpringCollaborationProject.account.service.jwt.dto;
+package com.example.PersonalSpringStudy.account.service.jwt.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

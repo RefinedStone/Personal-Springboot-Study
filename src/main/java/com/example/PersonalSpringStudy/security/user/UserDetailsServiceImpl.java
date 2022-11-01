@@ -1,7 +1,7 @@
-package com.example.ReactSpringCollaborationProject.security.user;
+package com.example.PersonalSpringStudy.security.user;
 
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
-import com.example.ReactSpringCollaborationProject.account.repository.AccountRepository;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

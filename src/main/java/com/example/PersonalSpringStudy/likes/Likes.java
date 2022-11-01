@@ -1,6 +1,7 @@
-package com.example.ReactSpringCollaborationProject.likes;
+package com.example.PersonalSpringStudy.likes;
 
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,12 +22,9 @@ public class Likes {
 
     //연관관계
     // Many Likes To One Post
-//    @ManyToOne
-//    @JoinColumn(name = "post", nullable = true)
-//    private Post post;
-
-    @Column(nullable = true)
-    private Long postId;
+    @ManyToOne
+    @JoinColumn(name = "post", nullable = true)
+    private Post post;
 
     //연관관계
     // Many Likes To One Account
@@ -34,10 +32,9 @@ public class Likes {
     @JoinColumn(name = "account", nullable = true)
     private Account account;
 
-    public Likes(Account account, Long postId, LikesRequestDto likesRequestDto) {
+    public Likes(Account account, Post post, LikesRequestDto likesRequestDto) {
         this.account = account;
-        //  this.post = post;
-        this.postId = postId;
+        this.post = post;
         this.likeCheck = !likesRequestDto.getLikeCheck();
     }
 

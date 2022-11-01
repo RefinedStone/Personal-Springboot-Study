@@ -1,10 +1,10 @@
-package com.example.ReactSpringCollaborationProject.comment.service;
+package com.example.PersonalSpringStudy.comment.service;
 
-import com.example.ReactSpringCollaborationProject.account.service.entity.Account;
-import com.example.ReactSpringCollaborationProject.comment.dto.CommentRequestDto;
-import com.example.ReactSpringCollaborationProject.comment.dto.CommentResponseDto;
-import com.example.ReactSpringCollaborationProject.comment.entity.Comment;
-import com.example.ReactSpringCollaborationProject.comment.repository.CommentRepository;
+import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.comment.dto.CommentRequestDto;
+import com.example.PersonalSpringStudy.comment.dto.CommentResponseDto;
+import com.example.PersonalSpringStudy.comment.entity.Comment;
+import com.example.PersonalSpringStudy.comment.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
