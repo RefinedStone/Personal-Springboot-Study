@@ -32,10 +32,10 @@ public class Likes {
     @JoinColumn(name = "account", nullable = true)
     private Account account;
 
-    public Likes(Account account, Post post, LikesRequestDto likesRequestDto) {
+    public Likes(Account account, Post post) {
         this.account = account;
         this.post = post;
-        this.likeCheck = !likesRequestDto.getLikeCheck();
+        this.likeCheck = true;
     }
 
     public Boolean getLikeCheck() {
