@@ -86,12 +86,15 @@ public class AccountService {
         response.addHeader(JwtUtil.REFRESH_TOKEN, tokenDto.getRefreshToken());
     }
 
+    //내 글목록 가져오기
     public List<PostResponseDto> getMyPost(Account account) {
 
         var posts = postRepository.findAllByEmail(account.getEmail());
-        var postResponseDtos = new ArrayList<PostResponseDto>();
+        var postResponseDtos = new ArrayList<PostResponseDto>() {
+            public String testNickname = account.getNickname();
+        };
         for (Post post : posts) {
-            postResponseDtos.add(new PostResponseDto(post));
+            postResponseDtos.add(new PostResponseDto(post, account));
         }
         return postResponseDtos;
     }

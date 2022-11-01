@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByOrderByCreatedAtDesc();
-    Comment findById(String Id);
-   // Comment findBy
+    //Comment findById(Long Id);
     List<Comment> findAllByEmail(String email);
 }

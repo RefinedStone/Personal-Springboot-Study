@@ -1,6 +1,7 @@
 package com.example.PersonalSpringStudy.post;
 
 
+import com.example.PersonalSpringStudy.account.service.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

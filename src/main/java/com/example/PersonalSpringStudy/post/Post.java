@@ -64,15 +64,14 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle();
     }
 
-
-//    public Post(PostRequestDto requestDto, Account account,Map<String,String> urlMap) {
-//        this.contents = requestDto.getContents();
-//        this.title = requestDto.getTitle();
-//        this.account = account;
-//        this.email = account.getEmail();
-//        this.urlToString = urlMap.get("url");
-//        this.urlKey = urlMap.get("key");
-//    }
+    public Post(Post post) {
+        this.contents = post.getContents();
+        this.title = post.getTitle();
+        this.account = post.getAccount();
+        this.email = post.getEmail();
+        this.urlToString = post.getUrlToString();
+        this.urlKey = post.getUrlKey();
+    }
 
     public Post(String contents, Account account, Map<String, String> urlMap) {
         this.contents = contents;
@@ -104,9 +103,10 @@ public class Post extends Timestamped {
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
     }
-//글내용만 업데이트
+
+    //글내용만 업데이트
     public void update(PostRequestDto requestDto) {
         this.contents = requestDto.getContents();
-           this.title = requestDto.getTitle();
+        this.title = requestDto.getTitle();
     }
 }
