@@ -157,7 +157,7 @@ Dto를 사용하는 이유에 대해서는 학습하였지만, like와 같이 tr
 첫번째는, 익명클래스를 이용하는 방법입니다.
 
 
-###PostService.java
+### PostService.java
 ```java
 public Post getOnePost(Account account) {
         Post post = postRepository.findById(10L).orElseThrow(RuntimeException::new);
@@ -194,5 +194,52 @@ public class PostResponseDto {
 
 
 결과만 말씀드리면 굉장히 짧지만.. 저의 짧은 지식으론 여기까지가 통용되는 방법인것 같습니다. 
+
+
+## 2022 - 11 - 03 update
+
+post에 좋아요의 갯수를 세는 api를 구현 하였습니다. 토글방식으로 구현 하였으며, 약간은 로직상 로스가 있다고 판단이 되네요. 추후에 좀더 발전 시켜 보아야 겠습니다.
+
+
+### LikeService.java
+```java
+ @Transactional
+    public boolean createLikes(Account account, Long postId) {
+        //게시글이 있는지 부터 체크합니다.
+        Post post = postRepository.findById(postId).orElseThrow(RuntimeException::new);
+        //Likes db에 해당 아이디와 포스트값으로 저장된 데이터가 있는지 판단  
+        var r = likesRepository.findByAccountAndPost(account, post);
+        //db 데이터가 있으면
+        if (r.isPresent()) {
+            Likes likes = r.get();
+            likes.setLikeCheck(!(likes.getLikeCheck()));
+            post.setLikesLength(likes.getLikeCheck());
+            return likes.getLikeCheck();
+        }
+        //db 데이터가 없으면
+        else {
+            Likes likes = new Likes(account, post);
+            likesRepository.save(likes);
+            post.setLikesLength(likes.getLikeCheck());
+            return likes.getLikeCheck();
+        }
+    }
+
+}
+```
+
+### Post.java
+```java
+ //초기값이 null이므로 0L로 초기값을 준다!
+ @Column(nullable = true)
+ private Long likesLength = 0L;
+    
+//라이크의 갯수를 추가하는 메소드
+public void setLikesLength(boolean likesType) {
+        this.likesLength = (likesType) ? this.likesLength + 1L : this.likesLength - 1L;
+    }
+```
+
+
 
 
