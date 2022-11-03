@@ -51,7 +51,7 @@ public class Post extends Timestamped {
     private List<Likes> likes;
 
     @Column(nullable = true)
-    private Long likesLength;
+    private Long likesLength = 0L;
 
     public Post(String contents, String title) {
         this.contents = contents;
@@ -79,7 +79,6 @@ public class Post extends Timestamped {
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
-        this.likesLength = 0L;
     }
 
     public Post(PostRequestDto requestDto, Account account) {
@@ -94,7 +93,6 @@ public class Post extends Timestamped {
         this.title = "";
         this.account = account;
         this.email = account.getEmail();
-        this.likesLength = 0L;
     }
 
     public Post(PostRequestDto requestDto, Map<String, String> urlMap) {
@@ -110,6 +108,7 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle();
     }
 
+    //라이크의 갯수를 추가하는 메소드
     public void setLikesLength(boolean likesType) {
         this.likesLength = (likesType) ? this.likesLength + 1L : this.likesLength - 1L;
     }
