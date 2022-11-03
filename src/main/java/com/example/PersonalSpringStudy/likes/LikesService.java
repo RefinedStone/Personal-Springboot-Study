@@ -18,15 +18,19 @@ public class LikesService {
     //좋아요 등록
     @Transactional
     public boolean createLikes(Account account, Long postId) {
-
+        //게시글이 있는지 부터 체크합니다.
         Post post = postRepository.findById(postId).orElseThrow(RuntimeException::new);
+        //Likes db에 해당 아이디와 포스트값으로 저장된 데이터가 있는지 판단
         var r = likesRepository.findByAccountAndPost(account, post);
+        //db 데이터가 있으면
         if (r.isPresent()) {
             Likes likes = r.get();
             likes.setLikeCheck(!(likes.getLikeCheck()));
             post.setLikesLength(likes.getLikeCheck());
             return likes.getLikeCheck();
-        } else {
+        }
+        //db 데이터가 없으면
+        else {
             Likes likes = new Likes(account, post);
             likesRepository.save(likes);
             post.setLikesLength(likes.getLikeCheck());
