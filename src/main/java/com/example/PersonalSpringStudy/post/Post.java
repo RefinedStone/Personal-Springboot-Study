@@ -76,13 +76,14 @@ public class Post extends Timestamped {
         this.urlKey = post.getUrlKey();
     }
 
-    public Post(String contents, Account account, Map<String, String> urlMap) {
-        this.contents = contents;
-        this.title = "";
+    public Post(PostRequestDto requestDto, Account account, Map<String, String> urlMap) {
+        this.contents = requestDto.getContents();
+        this.title = requestDto.getTitle();
         this.account = account;
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
+        this.postType = requestDto.getType();
 
     }
 
@@ -91,7 +92,7 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle();
         this.account = account;
         this.email = account.getEmail();
-        this.postType= requestDto.getType();
+        this.postType = requestDto.getType();
     }
 
     public Post(String contents, Account account) {

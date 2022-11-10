@@ -26,10 +26,10 @@ public class PostController {
 
     //글쓰기 + img 업로드
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseDto<?> createPost(@RequestParam(name = "contents", required = false) String contents,
+    public ResponseDto<?> createPost(@RequestPart(name = "data", required = false) PostRequestDto postRequestDto,
                                      @RequestPart(name = "image", required = false) MultipartFile imgFile,
                                      @AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
-        return ResponseDto.success(postService.createPost(contents, imgFile, userDetails.getAccount()));
+        return ResponseDto.success(postService.createPost(postRequestDto, imgFile, userDetails.getAccount()));
     }
 
     //글 수정
