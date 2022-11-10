@@ -241,5 +241,38 @@ public void setLikesLength(boolean likesType) {
 ```
 
 
+## 2022 - 11 - 09 Update
+
+오늘은 enum 타입을 도입 해보려고 합니다. enum을 쓰는 이유는 가독성이나 인스턴스 생성을 막기 위해서 정도 입니다.
+
+### PostType.java
+```java
+public enum PostType {
+    IMAGE,TEXT
+}
+```
+enum 클래스를 만드는건 상당히 간단합니다. 저렇게 나열 형태로 선언 하면 되고, Convention은 전부 대문자로 쓰는것입니다.
 
 
+### PostRequestDto.java
+```java
+public class PostRequestDto {
+    private String title;
+    private String contents;
+    // JsonValue 어노테이션을 통해 타입을 받아준다
+    @JsonValue private PostType type;
+}
+```
+### Post.java
+```java
+    @Enumerated(EnumType.STRING)
+    private PostType postType;
+```
+Entity에는 annotation만 주의 하면 됩니다.
+
+오늘은 Enum타입을 매우 간단히 구현 해보았습니다. 
+
+
+### 앞으로 올릴 내용
+
+최근에 항해 99 최종 프로젝트를 진행중이라 굉장히 바쁜 와중입니다. QuaryDsl에 대해 공부중인데, 백엔드 공부 레포지토리에도 그 내용을 활용하여 코드를 작성하고 싶네요
