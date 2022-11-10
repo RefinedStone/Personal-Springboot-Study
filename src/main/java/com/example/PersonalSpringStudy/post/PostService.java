@@ -3,7 +3,6 @@ package com.example.PersonalSpringStudy.post;
 import com.example.PersonalSpringStudy.account.service.entity.Account;
 import com.example.PersonalSpringStudy.aws_s3.S3UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,14 +31,14 @@ public class PostService {
 
     //글 쓰기
     @Transactional
-    public PostResponseDto createPost(String contents, MultipartFile imgFile, Account account) throws IOException {
+    public PostResponseDto createPost(PostRequestDto postRequestDto, MultipartFile imgFile, Account account) throws IOException {
         if (!(imgFile == null)) {
             var r = s3UploadUtil.upload(imgFile, "test");
-            Post post = new Post(contents, account, r);
+            Post post = new Post(postRequestDto, account, r);
             postRepository.save(post);
             return new PostResponseDto(post);
         } else {
-            Post post = new Post(contents, account);
+            Post post = new Post(postRequestDto, account);
             postRepository.save(post);
             return new PostResponseDto(post);
         }
