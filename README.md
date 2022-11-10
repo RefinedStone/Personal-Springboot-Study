@@ -241,7 +241,7 @@ public void setLikesLength(boolean likesType) {
 ```
 
 
-## 2022 - 11 - 09 
+## 2022 - 11 - 09 Update
 
 오늘은 enum 타입을 도입 해보려고 합니다. enum을 쓰는 이유는 가독성이나 인스턴스 생성을 막기 위해서 정도 입니다.
 
