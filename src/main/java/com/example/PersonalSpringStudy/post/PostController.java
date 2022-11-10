@@ -51,4 +51,10 @@ public class PostController {
         return ResponseDto.success(postService.getOnePost(userDetails.getAccount()));
     }
 
+    //test
+    @PostMapping("/test")
+    public PostType testPost( @AuthenticationPrincipal UserDetailsImpl userDetails,@RequestBody PostRequestDto postRequestDto){
+        return postService.testPost(postRequestDto,userDetails.getAccount());
+    }
+
 }

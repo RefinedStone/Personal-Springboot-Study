@@ -89,4 +89,11 @@ public class PostService {
             public String nickname2 = account.getNickname();
         };
     }
+
+    public PostType testPost(PostRequestDto postRequestDto, Account account) {
+
+        Post post = new Post(postRequestDto, account);
+        postRepository.save(post);
+        return post.getPostType();
+    }
 }
