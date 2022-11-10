@@ -53,6 +53,10 @@ public class Post extends Timestamped {
     @Column(nullable = true)
     private Long likesLength = 0L;
 
+    @Enumerated(EnumType.STRING)
+    private PostType postType;
+
+
     public Post(String contents, String title) {
         this.contents = contents;
         this.title = title;
@@ -79,6 +83,7 @@ public class Post extends Timestamped {
         this.email = account.getEmail();
         this.urlToString = urlMap.get("url");
         this.urlKey = urlMap.get("key");
+
     }
 
     public Post(PostRequestDto requestDto, Account account) {
@@ -86,6 +91,7 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle();
         this.account = account;
         this.email = account.getEmail();
+        this.postType= requestDto.getType();
     }
 
     public Post(String contents, Account account) {

@@ -1,5 +1,6 @@
 package com.example.PersonalSpringStudy.post;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +13,5 @@ import lombok.Setter;
 public class PostRequestDto {
     private String title;
     private String contents;
-
+    @JsonValue private PostType type;
 }
