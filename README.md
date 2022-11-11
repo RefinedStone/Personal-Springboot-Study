@@ -277,4 +277,61 @@ Entity에는 annotation만 주의 하면 됩니다.
 
 최근에 항해 99 최종 프로젝트를 진행중이라 굉장히 바쁜 와중입니다. QuaryDsl에 대해 공부중인데, 백엔드 공부 레포지토리에도 그 내용을 활용하여 코드를 작성하고 싶네요
 
-두번째는 쿼리 최적화를 위한 즉시로딩과 지연로딩에 관해서 코드를 작성해보려고 
+두번째는 쿼리 최적화를 위한 즉시로딩과 지연로딩에 관해서 코드를 작성해보려고 합니다
+
+
+
+## 2022 - 11 - 12 Update
+
+오늘은 Amazon S3를 통해 유저 프로필 사진 update 기능을 추가 하였습니다.
+
+S3를 이용한 이미지 업로드 기능은 사실 프론트에서 하는게 맞습니다.. 효율적으론 그렇지만.. 프론트엔드 협업분들에게 모든것을 요구 할 수는 없기에, 프로젝트에 썼던 경험이 있습니다.
+
+그때의 기억을 되살려서 코드를 작성중입니다.
+
+S3 기본세팅은 저의 레포지토리에서 참고 하여 사용하였습니다
+https://github.com/RefinedStone/aws-s3-setting-success.git
+
+### AccountController.java
+```java
+ //내 프로필 편집하기
+    @PatchMapping
+    public ResponseDto<?> editMyInfo(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestPart AccountReqDto accountReqDto, MultipartHttpServletRequest request) throws IOException {
+        MultipartFile file = request.getFile("profileImg");
+        return accountService.editMyInfo(userDetails.getAccount(),accountReqDto, file);
+    }
+```
+
+
+### AccountService.java
+```java
+   public ResponseDto<?> editMyInfo(Account account, AccountReqDto accountReqDto, MultipartFile file) throws IOException {
+        // 아이디 존재 여부 체크
+        accountRepository.findById(account.getId()).orElseThrow(RuntimeException::new);
+        //img 업로드 & return 값 받기
+        Map<String, String> profile = s3UploadUtil.upload(file, "profile");
+        // Account repo에 url 및 key 저장
+        account.update(accountReqDto,profile);
+        return ResponseDto.success("Profile edited");
+    }
+```
+
+### Account.java
+```java
+public void update(AccountReqDto accountReqDto, Map<String,String> urlMap) {
+        this.email = accountReqDto.getEmail();
+        this.password = accountReqDto.getPassword();
+        this.nickname = accountReqDto.getNickname();
+        this.imgUrl = urlMap.get("url");
+        this.imgKey = urlMap.get("key");
+    }
+}
+```
+
+아직 AccountService 단에서 수정해줘야 할 부분들이 많습니다.  detail하게 변경해야 할 부분은 많아 보입니다.
+
+
+#### Update 할 내용
+1.앞전에 말했던 QuaryDsl을 적용하려고 준비중입니다.
+2.이미지를 list로 넣는 방법을 post 기능에 추가하려고 합니다.
+
