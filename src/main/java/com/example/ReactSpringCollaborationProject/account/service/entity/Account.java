@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.util.Map;
 
 @Getter
 @Entity
@@ -25,10 +26,20 @@ public class Account {
     @NotBlank
     private String nickname;
 
+    private String imgUrl;
+    private String imgKey;
+
     public Account(AccountReqDto accountReqDto) {
         this.email = accountReqDto.getEmail();
         this.password = accountReqDto.getPassword();
         this.nickname = accountReqDto.getNickname();
     }
 
+    public void update(AccountReqDto accountReqDto, Map<String,String> urlMap) {
+        this.email = accountReqDto.getEmail();
+        this.password = accountReqDto.getPassword();
+        this.nickname = accountReqDto.getNickname();
+        this.imgUrl = urlMap.get("url");
+        this.imgKey = urlMap.get("key");
+    }
 }
