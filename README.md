@@ -289,6 +289,9 @@ S3를 이용한 이미지 업로드 기능은 사실 프론트에서 하는게 �
 
 그때의 기억을 되살려서 코드를 작성중입니다.
 
+S3 기본세팅은 저의 레포지토리에서 참고 하여 사용하였습니다
+https://github.com/RefinedStone/aws-s3-setting-success.git
+
 ### AccountController.java
 ```java
  //내 프로필 편집하기
