@@ -8,6 +8,7 @@ import com.example.PersonalSpringStudy.account.service.entity.dto.AccountReqDto;
 import com.example.PersonalSpringStudy.account.service.entity.dto.LoginReqDto;
 import com.example.PersonalSpringStudy.account.service.jwt.dto.TokenDto;
 import com.example.PersonalSpringStudy.account.service.jwt.util.JwtUtil;
+import com.example.PersonalSpringStudy.aws_s3.S3UploadUtil;
 import com.example.PersonalSpringStudy.comment.dto.CommentResponseDto;
 import com.example.PersonalSpringStudy.comment.entity.Comment;
 import com.example.PersonalSpringStudy.comment.repository.CommentRepository;
@@ -22,10 +23,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -38,6 +42,7 @@ public class AccountService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final S3UploadUtil s3UploadUtil;
 
     @Transactional
     public GlobalResDto signup(AccountReqDto accountReqDto) {
@@ -114,5 +119,16 @@ public class AccountService {
         var refreshToken = refreshTokenRepository.findByAccountEmail(email).orElseThrow(RuntimeException::new);
         refreshTokenRepository.delete(refreshToken);
         return ResponseDto.success("Delete Success");
+    }
+
+    //profile edit 기능
+    public ResponseDto<?> editMyInfo(Account account, AccountReqDto accountReqDto, MultipartFile file) throws IOException {
+        // 아이디 존재 여부 체크
+        accountRepository.findById(account.getId()).orElseThrow(RuntimeException::new);
+        //img 업로드 & return 값 받기
+        Map<String, String> profile = s3UploadUtil.upload(file, "profile");
+        // Account repo에 url 및 key 저장
+        account.update(accountReqDto,profile);
+        return ResponseDto.success("Profile edited");
     }
 }
