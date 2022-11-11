@@ -23,6 +23,7 @@ public class S3UploadUtil {
 
     private final AmazonS3Client amazonS3Client;
 
+
     @Value("${cloud.aws.s3.bucket}")
     public String bucket;  // S3 버킷
 

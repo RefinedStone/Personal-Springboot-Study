@@ -12,9 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/account")
@@ -61,4 +64,10 @@ public class AccountController {
 
     }
 
+    //내 프로필 편집하기
+    @PatchMapping
+    public ResponseDto<?> editMyInfo(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestPart AccountReqDto accountReqDto, MultipartHttpServletRequest request) throws IOException {
+        MultipartFile file = request.getFile("profileImg");
+        return accountService.editMyInfo(userDetails.getAccount(),accountReqDto, file);
+    }
 }
