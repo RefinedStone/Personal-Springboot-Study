@@ -330,3 +330,8 @@ public void update(AccountReqDto accountReqDto, Map<String,String> urlMap) {
 
 아직 AccountService 단에서 수정해줘야 할 부분들이 많습니다.  detail하게 변경해야 할 부분은 많아 보입니다.
 
+
+#### Update 할 내용
+1.앞전에 말했던 QuaryDsl을 적용하려고 준비중입니다.
+2.이미지를 list로 넣는 방법을 post 기능에 추가하려고 합니다.
+
