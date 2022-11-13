@@ -8,11 +8,20 @@
 
 그 과정에서 클래스나 메소드 단계에서, 코드가 통일 되어 있지 않고 산만한 느낌을 주는 부분도 많습니다.
 
+## 서비스 소개
+
+서비스 소개 입니다.
+
+
 ## ERD
 
 현재 ERD diagram 입니다.
 ![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
 
+
+## Trouble Shooting
+
+트러블 슈팅 내역 입니다.
 
 
 ## 2022 - 10 - 29 update
