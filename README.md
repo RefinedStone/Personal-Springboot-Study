@@ -5,7 +5,7 @@
 제가 배운 내용을 최대한 활용 하려고 노력하고 있습니다.<br>
 
 
-##ERD
+## ERD
 
 현재 ERD diagram 입니다.
 ![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
@@ -350,4 +350,10 @@ public void update(AccountReqDto accountReqDto, Map<String,String> urlMap) {
 ERD 세팅은 제 블로그에 있습니다
 
 -> [blog: 자동 ERD 생성](https://chem-en-9273.tistory.com/77) <br>
+
+
+현재 ERD 구조를 보겠습니다
+![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
+
+ 
 
