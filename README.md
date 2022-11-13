@@ -4,6 +4,14 @@
 
 제가 배운 내용을 최대한 활용 하려고 노력하고 있습니다.<br>
 
+
+##ERD
+
+현재 ERD diagram 입니다.
+![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
+
+
+
 ## 2022 - 10 - 29 update
 mySql -> h2-console세팅으로 변경 하였습니다. <br>
 -> [blog: h2-console 사용하기](https://chem-en-9273.tistory.com/66) <br>
@@ -331,7 +339,15 @@ public void update(AccountReqDto accountReqDto, Map<String,String> urlMap) {
 아직 AccountService 단에서 수정해줘야 할 부분들이 많습니다.  detail하게 변경해야 할 부분은 많아 보입니다.
 
 
-#### Update 할 내용
+### Update 할 내용
 1.앞전에 말했던 QuaryDsl을 적용하려고 준비중입니다.
 2.이미지를 list로 넣는 방법을 post 기능에 추가하려고 합니다.
+
+
+## 2022 - 11 - 13 update
+
+오늘은 IntelliJ의 기능 중 하나인 DATABASE에서 erd를 그리는 기능을 도입 해 보았습니다. 학습용 레퍼지토리라 늘 설계가 변형이 이루어 지고 있엇는데, 이 방식을 도입하면 늘 최신상태의 ERD를 유지 할 수 있을것 같습니다.
+ERD 세팅은 제 블로그에 있습니다
+
+-> [blog: 자동 ERD 생성](https://chem-en-9273.tistory.com/77) <br>
 
