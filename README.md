@@ -16,7 +16,8 @@
 ## ERD
 
 현재 ERD diagram 입니다.
-![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
+![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
+
 
 
 ## Trouble Shooting
@@ -396,3 +397,18 @@ ERD 세팅은 제 블로그에 있습니다
 이런 형태로 수정하면 됩니다.
 
 앞으로의 코드는 이 Lazy에 맞춰  n+1 문제를 발생시키지 않는 방향으로 이루어질 예정입니다.
+
+
+
+오늘의 두번째 update 입니다
+
+Post와 Comment 연관관계를 확고히 하는 코드 리팩토링을 하였습니다.
+
+간단한 부분이라 코드는 생략하고
+
+변화된 ERD를 보겠습니다
+
+
+### ERD 수정
+![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
+
