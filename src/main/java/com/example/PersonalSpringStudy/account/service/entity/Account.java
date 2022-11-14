@@ -43,3 +43,4 @@ public class Account {
         this.imgKey = urlMap.get("key");
     }
 }
+

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
 @Setter
@@ -32,7 +31,7 @@ public class Comment extends Timestamped {
     private Long postId;
 
     // many comment to one post.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post")
     private Post post;
 
