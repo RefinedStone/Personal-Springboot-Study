@@ -37,7 +37,7 @@ public class Post extends Timestamped {
     private String urlKey;
 
     @JsonIgnore //JPA 순환참조
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_Id")
     private Account account;
 
