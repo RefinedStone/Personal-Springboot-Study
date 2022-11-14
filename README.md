@@ -16,7 +16,8 @@
 ## ERD
 
 현재 ERD diagram 입니다.
-![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
+![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
+
 
 
 ## Trouble Shooting
@@ -368,4 +369,48 @@ ERD 세팅은 제 블로그에 있습니다
 ![image](https://user-images.githubusercontent.com/113455892/201513867-824196b9-4cc2-4c25-899a-76a6918958c0.png)
 
  
+
+## 2022 - 11 -15 update
+
+오늘은 Entity에 연관관계 ManyToOne OneToMany에 fetchtype을 Lazy로 변경하였습니다. 그 이유는 당연히 코드 안정성과 최적화를 위해서 입니다.
+
+
+우선적으로 모든 경우에 Lazy로 걸어주고, 나중에 fetch join이나 기타 방법으로 풀어주는것이 정론이라 저도 그 방법을 따르기로 했습니다.
+
+물론 OneToMany의 경우에는 default가 Lazy이기 때문에 건들지 않고, ManyToOne인경우에만 설정을 해주면 됩니다.
+
+예를들면,
+
+### Post.java
+```java
+    @JsonIgnore //JPA 순환참조
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_Id")
+    private Account account;
+
+    //One post to Many comment
+    @OneToMany(mappedBy = "post") // default = lazy
+    private List<Comment> comment;
+```
+
+
+이런 형태로 수정하면 됩니다.
+
+앞으로의 코드는 이 Lazy에 맞춰  n+1 문제를 발생시키지 않는 방향으로 이루어질 예정입니다.
+
+
+
+
+
+오늘의 두번째 update 입니다
+
+Post와 Comment 연관관계를 확고히 하는 코드 리팩토링을 하였습니다.
+
+간단한 부분이라 코드는 생략하고
+
+변화된 ERD를 보겠습니다
+
+
+### ERD 수정
+![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
 
