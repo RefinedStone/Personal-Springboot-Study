@@ -94,7 +94,7 @@ public class AccountService {
     //내 글목록 가져오기
     public List<PostResponseDto> getMyPost(Account account) {
 
-        var posts = postRepository.findAllByEmail(account.getEmail());
+        var posts = postRepository.findAllByAccount(account);
         var postResponseDtos = new ArrayList<PostResponseDto>() {
             public String testNickname = account.getNickname();
         };
@@ -105,7 +105,7 @@ public class AccountService {
     }
 
     public List<CommentResponseDto> getMyComment(Account account) {
-        var comments = commentRepository.findAllByEmail(account.getEmail());
+        var comments = commentRepository.findAllByAccount(account);
         var commentResponseDtos = new ArrayList<CommentResponseDto>();
         for (Comment comment : comments) {
             commentResponseDtos.add(new CommentResponseDto(comment));

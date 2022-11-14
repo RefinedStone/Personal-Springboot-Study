@@ -70,6 +70,6 @@ public class AccountController {
     @PatchMapping
     public ResponseDto<?> editMyInfo(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestPart AccountReqDto accountReqDto, MultipartHttpServletRequest request) throws IOException {
         MultipartFile file = request.getFile("profileImg");
-        return accountService.editMyInfo(userDetails.getAccount(),accountReqDto, file);
+        return accountService.editMyInfo(userDetails.getAccount(), accountReqDto, file);
     }
 }

@@ -14,6 +14,6 @@ public class PostRequestDto {
     private String title;
     private String contents;
     // JsonValue 어노테이션을 통해 타입을 받아준다
-    @JsonValue private PostType type;
+    private PostType type;
 
 }

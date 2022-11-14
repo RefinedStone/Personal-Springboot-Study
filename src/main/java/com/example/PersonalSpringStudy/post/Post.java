@@ -47,7 +47,7 @@ public class Post extends Timestamped {
 
     // 연관관계
     // One Post To Many Likes
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post") // default = lazy
     private List<Likes> likes;
 
     @Column(nullable = true)

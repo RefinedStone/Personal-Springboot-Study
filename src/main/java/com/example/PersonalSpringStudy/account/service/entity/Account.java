@@ -1,22 +1,24 @@
 package com.example.PersonalSpringStudy.account.service.entity;
 
 import com.example.PersonalSpringStudy.account.service.entity.dto.AccountReqDto;
+import com.example.PersonalSpringStudy.comment.entity.Comment;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.cfg.annotations.reflection.internal.XMLContext;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.Map;
 
 @Getter
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
 
     @Id
+    @Column(name="account_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
@@ -28,6 +30,10 @@ public class Account {
 
     private String imgUrl;
     private String imgKey;
+
+    //one account to many comment
+    @OneToMany(mappedBy = "account")
+    private List<Comment> comment;
 
     public Account(AccountReqDto accountReqDto) {
         this.email = accountReqDto.getEmail();

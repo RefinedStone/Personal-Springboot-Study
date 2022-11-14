@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAllByOrderByCreatedAtDesc();
-    List<Post> findAllByEmail(String email);
+    List<Post> findAllByAccount(Account account);
     Optional<Post> findById(Long Id);
 
 

@@ -24,25 +24,24 @@ public class Comment extends Timestamped {
     @Column(nullable = true)
     private String comments;
 
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private Long postId;
-
     // many comment to one post.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post")
     private Post post;
 
+    // many comment to one account
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account")
+    private Account account;
+
     public Comment(CommentRequestDto requestDto) {
         this.comments = requestDto.getComments();
     }
 
-    public Comment(CommentRequestDto requestDto, Account account) {
+    public Comment(Post post,CommentRequestDto requestDto, Account account) {
         this.comments = requestDto.getComments();
-        this.postId = requestDto.getPostId();
-        this.email = account.getEmail();
+        this.post = post;
+        this.account = account;
     }
 
     public void update(CommentRequestDto requestDto) {
