@@ -414,3 +414,105 @@ Post와 Comment 연관관계를 확고히 하는 코드 리팩토링을 하였�
 ### ERD 수정
 ![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
 
+
+## 2022 - 12 -14 update
+
+오늘은 이메일 인증 서비스를 구현 해보았습니다. 물론 RestApi 스타일을 상정하고 구현하였습니다.
+
+interface JavaMailSender를 기본적으로 이용합니다.
+
+이 인터페이스는 package org.springframework.mail.javamail에 존재합니다. 즉 스프링프레임워크에서 제공하고 있습니다.
+
+가장 핵심인 EmailingService의 로직을 간단히 설명 해보겠습니다.
+
+로직은 간단합니다
+
+랜덤 인증코드 생성 -> 메일 양식 작성 -> 실제 코드 발송
+
+
+위에서 말씀드린 JavaMailSender가 실질적으로 메일을 보내는 기능이라고 생각하면 됩니다.
+
+
+### EmailingService.java
+```java
+
+
+@Service
+@RequiredArgsConstructor
+public class EmailingService {
+
+    private final AccountRepository accountRepository;
+    //mailSender 인증용
+    private final JavaMailSender emailSender;
+    private String authNum;
+
+
+    //랜덤 인증 코드 생성
+    public void createCode() {
+        Random random = new Random();
+        StringBuffer key = new StringBuffer();
+
+        for (int i = 0; i < 8; i++) {
+            int index = random.nextInt(3);
+
+            switch (index) {
+                case 0:
+                    key.append((char) ((int) random.nextInt(26) + 97));
+                    break;
+                case 1:
+                    key.append((char) ((int) random.nextInt(26) + 65));
+                    break;
+                case 2:
+                    key.append(random.nextInt(9));
+                    break;
+            }
+        }
+        authNum = key.toString();
+    }
+
+    //메일 양식 작성
+    public MimeMessage createEmailForm(String email) throws MessagingException, UnsupportedEncodingException {
+
+        createCode(); //인증 코드 생성
+        String setFrom = "chem.en.9273@gmail.com"; //email-config에 설정한 자신의 이메일 주소(보내는 사람)
+        String toEmail = email; //받는 사람
+        String title = "Veloce 개인 스프링 서버 입니다"; //제목
+
+        MimeMessage message = emailSender.createMimeMessage();
+        message.addRecipients(MimeMessage.RecipientType.TO, email); //보낼 이메일 설정
+        message.setSubject(title); //제목 설정
+        message.setFrom(setFrom); //보내는 이메일
+        message.setText("<div style=\"margin:100px;\">" +
+                "<h1> Veloce 인증번호 입니다.</h1>\n<br>" +
+                "<p> 아래 코드를 회원가입 창으로 돌아가 입력해주세요.</p>\n<br>" +
+                "<h2>인증번호 : " + authNum + "</h2>" +
+                "<br/>\n" +
+                "</div>", "utf-8", "html");
+
+        return message;
+    }
+
+    //실제 메일 전송
+    public String sendEmail(String toEmail) throws MessagingException, UnsupportedEncodingException {
+        //메일전송에 필요한 정보 설정
+        MimeMessage emailForm = createEmailForm(toEmail);
+        //실제 메일 전송
+        emailSender.send(emailForm);
+        return authNum; //인증 코드 반환
+    }
+
+
+}
+```
+
+
+이 기능은 기본 이메일 회원가입의 무분별함을 막기 위한 장치라고 볼 수 있습니다.
+
+email을 통한 회원가입기능 이외에, 구글,카카오등 OAuth 로그인을 구현해볼까 합니다.
+
+
+### Update 할 내용
+1.구글, 카카오 OAuth로그인 구현하기
+
+
+
