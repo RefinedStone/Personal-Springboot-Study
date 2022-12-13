@@ -505,8 +505,16 @@ public class EmailingService {
 }
 ```
 
+적용모습
 
-이 기능은 기본 이메일 회원가입의 무분별함을 막기 위한 장치라고 볼 수 있습니다.
+![image](https://user-images.githubusercontent.com/113455892/207448402-610f3f36-21da-4f29-9b43-01be0ef9c977.png)
+
+![image](https://user-images.githubusercontent.com/113455892/207448460-bbaf52fc-1463-45e5-9736-79f3bfe4f26a.png)
+
+
+postman에서 response로 주는 값과, 실제 이메일이 온 값이 일치하는지를 확인하는 로직이 클라이언트단에서 있으면, 메일 인증 기능이 잘 작동 할 것입니다.
+
+또한, 이 기능은 기본 이메일 회원가입의 무분별함을 막기 위한 장치라고 볼 수 있습니다.
 
 email을 통한 회원가입기능 이외에, 구글,카카오등 OAuth 로그인을 구현해볼까 합니다.
 
