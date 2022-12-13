@@ -415,7 +415,7 @@ Post와 Comment 연관관계를 확고히 하는 코드 리팩토링을 하였�
 ![image](https://user-images.githubusercontent.com/113455892/201755410-b7d9b153-3c58-4e43-9e58-d70948aefe48.png)
 
 
-## 2022 - 12 -14 update
+## 2022 - 12 -13 update
 
 오늘은 이메일 인증 서비스를 구현 해보았습니다. 물론 RestApi 스타일을 상정하고 구현하였습니다.
 
@@ -516,3 +516,18 @@ email을 통한 회원가입기능 이외에, 구글,카카오등 OAuth 로그�
 
 
 
+## 2022-12-14 update
+
+application.properties에는 민감한 정보들이 저장되는 경우가 많습니다. 이 경우에 github라던가에 .gitignore를 통해 올리지 않을 수 있겠지만, CI-CD라던가 다양한 니즈에서 암호화가 필
+
+
+요합니다.
+
+그래서 이번에는 암호화를 할 수 있는 Jasypt를 적용시켜 보았습니다.
+
+좀 더 자세한 사항은 저의 블로그에 기록 되어 있습니다.
+
+블로그 가기https://chem-en-9273.tistory.com/101
+
+적용 모습
+![image](https://user-images.githubusercontent.com/113455892/207447806-9ac63606-ec4f-4fed-9f71-11de355e2438.png)
