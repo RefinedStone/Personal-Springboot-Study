@@ -1,6 +1,6 @@
 package com.example.PersonalSpringStudy.post;
 
-import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.entity.Account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 

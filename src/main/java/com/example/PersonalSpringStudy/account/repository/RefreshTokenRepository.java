@@ -1,7 +1,7 @@
 package com.example.PersonalSpringStudy.account.repository;
 
 
-import com.example.PersonalSpringStudy.account.service.entity.RefreshToken;
+import com.example.PersonalSpringStudy.account.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

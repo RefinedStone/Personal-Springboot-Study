@@ -2,13 +2,13 @@ package com.example.PersonalSpringStudy.account.service;
 
 import com.example.PersonalSpringStudy.account.repository.AccountRepository;
 import com.example.PersonalSpringStudy.account.repository.RefreshTokenRepository;
-import com.example.PersonalSpringStudy.account.service.entity.Account;
-import com.example.PersonalSpringStudy.account.service.entity.RefreshToken;
-import com.example.PersonalSpringStudy.account.service.entity.dto.AccountReqDto;
-import com.example.PersonalSpringStudy.account.service.entity.dto.LoginReqDto;
-import com.example.PersonalSpringStudy.account.service.jwt.dto.TokenDto;
-import com.example.PersonalSpringStudy.account.service.jwt.util.JwtUtil;
-import com.example.PersonalSpringStudy.aws_s3.S3UploadUtil;
+import com.example.PersonalSpringStudy.account.entity.Account;
+import com.example.PersonalSpringStudy.account.entity.RefreshToken;
+import com.example.PersonalSpringStudy.account.dto.AccountReqDto;
+import com.example.PersonalSpringStudy.account.dto.LoginReqDto;
+import com.example.PersonalSpringStudy.setting.jwt.dto.TokenDto;
+import com.example.PersonalSpringStudy.setting.jwt.util.JwtUtil;
+import com.example.PersonalSpringStudy.setting.aws_s3.S3UploadUtil;
 import com.example.PersonalSpringStudy.comment.dto.CommentResponseDto;
 import com.example.PersonalSpringStudy.comment.entity.Comment;
 import com.example.PersonalSpringStudy.comment.repository.CommentRepository;
@@ -131,4 +131,6 @@ public class AccountService {
         account.update(accountReqDto,profile);
         return ResponseDto.success("Profile edited");
     }
+
+
 }

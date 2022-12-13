@@ -2,7 +2,7 @@ package com.example.PersonalSpringStudy.post;
 
 
 import com.example.PersonalSpringStudy.global.dto.ResponseDto;
-import com.example.PersonalSpringStudy.security.user.UserDetailsImpl;
+import com.example.PersonalSpringStudy.setting.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
