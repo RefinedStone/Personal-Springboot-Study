@@ -1,6 +1,6 @@
 package com.example.PersonalSpringStudy.likes;
 
-import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.entity.Account;
 import com.example.PersonalSpringStudy.post.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
