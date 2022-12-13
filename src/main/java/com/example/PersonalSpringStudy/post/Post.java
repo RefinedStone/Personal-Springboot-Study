@@ -1,7 +1,7 @@
 package com.example.PersonalSpringStudy.post;
 
 import com.example.PersonalSpringStudy.Timestamped;
-import com.example.PersonalSpringStudy.account.service.entity.Account;
+import com.example.PersonalSpringStudy.account.entity.Account;
 import com.example.PersonalSpringStudy.comment.entity.Comment;
 import com.example.PersonalSpringStudy.likes.Likes;
 import com.fasterxml.jackson.annotation.JsonIgnore;

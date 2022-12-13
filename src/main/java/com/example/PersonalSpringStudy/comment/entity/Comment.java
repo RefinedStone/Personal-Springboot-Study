@@ -1,7 +1,8 @@
 package com.example.PersonalSpringStudy.comment.entity;
 
 import com.example.PersonalSpringStudy.Timestamped;
-import com.example.PersonalSpringStudy.account.service.entity.Account;
+
+import com.example.PersonalSpringStudy.account.entity.Account;
 import com.example.PersonalSpringStudy.comment.dto.CommentRequestDto;
 import com.example.PersonalSpringStudy.post.Post;
 import lombok.Getter;
