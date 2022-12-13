@@ -1,6 +1,7 @@
 package com.example.PersonalSpringStudy.comment.service;
 
-import com.example.PersonalSpringStudy.account.service.entity.Account;
+
+import com.example.PersonalSpringStudy.account.entity.Account;
 import com.example.PersonalSpringStudy.comment.dto.CommentRequestDto;
 import com.example.PersonalSpringStudy.comment.dto.CommentResponseDto;
 import com.example.PersonalSpringStudy.comment.entity.Comment;

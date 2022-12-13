@@ -1,13 +1,13 @@
 package com.example.PersonalSpringStudy.account.controller;
 
 
+import com.example.PersonalSpringStudy.account.dto.AccountReqDto;
+import com.example.PersonalSpringStudy.account.dto.LoginReqDto;
 import com.example.PersonalSpringStudy.account.service.AccountService;
-import com.example.PersonalSpringStudy.account.service.entity.dto.AccountReqDto;
-import com.example.PersonalSpringStudy.account.service.entity.dto.LoginReqDto;
-import com.example.PersonalSpringStudy.account.service.jwt.util.JwtUtil;
 import com.example.PersonalSpringStudy.global.dto.GlobalResDto;
 import com.example.PersonalSpringStudy.global.dto.ResponseDto;
-import com.example.PersonalSpringStudy.security.user.UserDetailsImpl;
+import com.example.PersonalSpringStudy.setting.jwt.util.JwtUtil;
+import com.example.PersonalSpringStudy.setting.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +40,7 @@ public class AccountController {
 
         return accountService.login(loginReqDto, response);
     }
+
 
     @GetMapping("/issue/token")
     public GlobalResDto issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response) {

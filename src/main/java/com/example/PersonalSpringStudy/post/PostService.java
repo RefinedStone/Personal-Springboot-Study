@@ -1,7 +1,7 @@
 package com.example.PersonalSpringStudy.post;
 
-import com.example.PersonalSpringStudy.account.service.entity.Account;
-import com.example.PersonalSpringStudy.aws_s3.S3UploadUtil;
+import com.example.PersonalSpringStudy.account.entity.Account;
+import com.example.PersonalSpringStudy.setting.aws_s3.S3UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
