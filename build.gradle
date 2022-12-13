@@ -69,9 +69,11 @@ dependencies {
     }
     //쿼리 파라미터 로그 외부 라이브러리
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
-    //google 간편로그인
-    //spring email
+    //google 이메일 인증
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.6.3'
+    //jasypt
+    implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.4'
+
 }
 
 tasks.named('test') {
