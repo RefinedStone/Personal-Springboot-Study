@@ -9,7 +9,9 @@ import java.util.Collection;
 public class UserDetailsImpl implements UserDetails {
 
     private Account account;
-
+    public UserDetailsImpl(Account account) {
+        this.account = account;
+    }
     public Account getAccount() {
         return this.account;
     }
