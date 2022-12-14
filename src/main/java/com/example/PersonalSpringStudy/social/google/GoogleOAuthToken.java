@@ -2,6 +2,7 @@ package com.example.PersonalSpringStudy.social.google;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
@@ -13,4 +14,7 @@ public class GoogleOAuthToken {
     private String scope;
     private String token_type;
     private String id_token;
+    public GoogleOAuthToken(){
+
+    }
 }
