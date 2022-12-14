@@ -52,11 +52,12 @@ public class OAuthService {
     public TokenDto oAuthLogin(Constant.SocialLoginType socialLoginType, String code) throws IOException {
         switch (socialLoginType) {
             case GOOGLE: {
-
+                out.println("-1열=-=========");
                 //구글로 일회성 코드를 보내 액세스 토큰이 담긴 응답객체를 받아옴
                 ResponseEntity<String> accessTokenResponse = googleOauth.requestAccessToken(code);
                 //응답 객체가 JSON형식으로 되어 있으므로, 이를 deserialization해서 자바 객체에 담을 것이다.
                 GoogleOAuthToken oAuthToken = googleOauth.getAccessToken(accessTokenResponse);
+                out.println("0열============");
                 out.println(oAuthToken.getAccess_token());
                 //액세스 토큰을 다시 구글로 보내 구글에 저장된 사용자 정보가 담긴 응답 객체를 받아온다.
                 out.println("1열===");

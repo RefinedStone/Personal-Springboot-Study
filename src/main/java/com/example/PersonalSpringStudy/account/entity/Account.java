@@ -17,11 +17,11 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+
     private String email;
-    @NotBlank
+
     private String password;
-    @NotBlank
+
     private String nickname;
 
     private String imgUrl;

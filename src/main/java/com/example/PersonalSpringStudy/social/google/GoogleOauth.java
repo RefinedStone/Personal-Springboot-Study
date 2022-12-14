@@ -62,6 +62,7 @@ public class GoogleOauth implements SocialOauth {
     }
 
     public ResponseEntity<String> requestAccessToken(String code) {
+        System.out.println("request access tokeon");
         String GOOGLE_TOKEN_REQUEST_URL = "https://oauth2.googleapis.com/token";
         RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<>();
@@ -82,7 +83,9 @@ public class GoogleOauth implements SocialOauth {
 
     public GoogleOAuthToken getAccessToken(ResponseEntity<String> response) throws JsonProcessingException {
         System.out.println("response.getBody() = " + response.getBody());
+        System.out.println("오류직전?");
         GoogleOAuthToken googleOAuthToken = objectMapper.readValue(response.getBody(), GoogleOAuthToken.class);
+        System.out.println("2 오류직전?");
         return googleOAuthToken;
     }
 

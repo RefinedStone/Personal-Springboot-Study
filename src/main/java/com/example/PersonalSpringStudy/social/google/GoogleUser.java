@@ -16,4 +16,5 @@ public class GoogleUser {
     public String familyName;
     public String picture;
     public String locale;
+    public GoogleUser(){}
 }
