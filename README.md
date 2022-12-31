@@ -526,9 +526,7 @@ email을 통한 회원가입기능 이외에, 구글,카카오등 OAuth 로그�
 
 ## 2022-12-14 update
 
-application.properties에는 민감한 정보들이 저장되는 경우가 많습니다. 이 경우에 github라던가에 .gitignore를 통해 올리지 않을 수 있겠지만, CI-CD라던가 다양한 니즈에서 암호화가 필
-
-요합니다.
+application.properties에는 민감한 정보들이 저장되는 경우가 많습니다. 이 경우에 github라던가에 .gitignore를 통해 올리지 않을 수 있겠지만, CI-CD라던가 다양한 니즈에서 암호화가 필요합니다.
 
 그래서 이번에는 암호화를 할 수 있는 Jasypt를 적용시켜 보았습니다.
 
