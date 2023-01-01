@@ -1,6 +1,7 @@
 package com.example.PersonalSpringStudy.test.native_query;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,36 +9,40 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+
 @RequestMapping("/api")
+
+@RequiredArgsConstructor
 @RestController
 public class NativeQueryTestController {
     private final NativeQueryTestJpaRepository nativeQueryTestJpaRepository;
     private final NativeQueryRepository nativeQueryRepository;
 
+
+
     //@Query(value = "SELECT P.POST_ID FROM POST P", nativeQuery = true)
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @GetMapping("/test/v1/query")
     public List<?> testQuery1() {
         return nativeQueryTestJpaRepository.findNativeQuery1();
     }
 
     //Query(value = "SELECT P.POST_ID FROM POST P", nativeQuery = true))
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @GetMapping("/test/v2/query")
     public List<?> testQuery2() {
         return nativeQueryTestJpaRepository.findNativeQuery2("SELECT P.POST_ID FROM POST P");
     }
 
     // Native SQL method를 작성하기 위해 새로운 repository를 만들어야 한다.
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @GetMapping("/test/v3/query")
     public List<?> testQuery3() {
         return nativeQueryRepository.nativeQuery();
     }
 
     //Querydsl과 Native SQL을  JPArepository 하나로 이용하도록 변경
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @GetMapping("/test/v4/query")
     public List<?> testQuery4() {
         return nativeQueryTestJpaRepository.nativeQuery();

@@ -1,13 +1,14 @@
 package com.example.PersonalSpringStudy.test.native_query;
 
 import com.example.PersonalSpringStudy.post.Post;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface NativeQueryTestJpaRepository extends JpaRepository<Post, Long>, NativeQueryTestRepositoryCustom {
+public interface NativeQueryTestJpaRepository extends JpaRepository<Post, Long>, NativeQueryTestRepositoryCustom{
     @Query(value = "SELECT P.POST_ID FROM POST P", nativeQuery = true)
     List<Long> findNativeQuery1();
     //인터페이스에 String을 선언하면 final 값으로 '상수(constant)'가 된다.
