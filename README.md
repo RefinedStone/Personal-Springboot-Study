@@ -1,4 +1,4 @@
-# Personal-Spring-Backend-Server
+# Personal-Spring-Backend-Study
 
 개인 스프링 백앤드 서버 학습 레포지토리 입니다.
 
