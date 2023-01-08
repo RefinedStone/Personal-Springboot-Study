@@ -536,3 +536,11 @@ application.properties에는 민감한 정보들이 저장되는 경우가 많�
 
 적용 모습
 ![image](https://user-images.githubusercontent.com/113455892/207447806-9ac63606-ec4f-4fed-9f71-11de355e2438.png)
+
+## 2023-1-08 update
+
+@RequestParam 대해 학습해봅시다.
+
+## 2023-1-09 update
+
+NativeSQL에 대해 고민해보고, 직접 구현해봅시다.
