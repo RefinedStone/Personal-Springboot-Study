@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface NativeQueryTestRepositoryCustom {
     //QueryDsl method
-    Post testQuery1();
+    Post testQuery();
 
     //Native SQL method
     List<?> nativeQuery();

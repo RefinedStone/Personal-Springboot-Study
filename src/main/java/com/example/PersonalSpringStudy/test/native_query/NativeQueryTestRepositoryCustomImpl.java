@@ -13,26 +13,37 @@ import java.util.List;
 
 import static com.example.PersonalSpringStudy.post.QPost.post;
 
+
 @Component
-public class NativeQueryTestRepositoryImpl implements NativeQueryTestRepositoryCustom {
+//@Primary
+public class NativeQueryTestRepositoryCustomImpl implements NativeQueryTestRepositoryCustom {
     private final JPAQueryFactory queryFactory;
-    @PersistenceContext
-    EntityManager em;
-    static StringBuilder  sb = new StringBuilder();
-    public NativeQueryTestRepositoryImpl(EntityManager em) {
+
+
+    static StringBuilder sb = new StringBuilder();
+
+
+    public NativeQueryTestRepositoryCustomImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
 
+    //    @PersistenceContext
+    @PersistenceContext
+    EntityManager em;
+
+
     /*QueryDsl*/
     @Override
-    public Post testQuery1() {
-        QPost qPost = post;
+    public Post testQuery() {
+        QPost qPost = QPost.post;
         QComment qComment = QComment.comment;
+
         return queryFactory
                 .select(post)
                 .from(post)
                 .fetchOne();
     }
+
     /*Native SQL*/
     @Override
     public List<?> nativeQuery() {
@@ -51,6 +62,7 @@ public class NativeQueryTestRepositoryImpl implements NativeQueryTestRepositoryC
         List<?> resultList = nativeQuery.getResultList();
         return resultList;
     }
+
 
 
 }
