@@ -538,6 +538,10 @@ application.properties에는 민감한 정보들이 저장되는 경우가 많�
 
 @RequestParam 대해 학습해봅시다.
 
+https://chem-en-9273.tistory.com/145
+
 ## 2023-1-09 update
 
 NativeSQL에 대해 고민해보고, 직접 구현해봅시다.
+
+https://chem-en-9273.tistory.com/139
