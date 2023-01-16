@@ -542,6 +542,12 @@ https://chem-en-9273.tistory.com/145
 
 ## 2023-1-09 update
 
-NativeSQL에 대해 고민해보고, 직접 구현해봅시다.
+JPA와 NativeSQL에 대해 고민해보고, 직접 구현해봅시다.(1)
 
 https://chem-en-9273.tistory.com/139
+
+## 2023-1-11 update
+
+JPA와NativeSQL에 대해 고민해보고, 직접 구현해봅시다.(2)
+
+https://chem-en-9273.tistory.com/140
